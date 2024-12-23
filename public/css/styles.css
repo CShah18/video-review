@@ -1,0 +1,619 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a:focus {
+    -moz-outline-style: none;
+    outline: none
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+input[type="file"]::-moz-file-upload-button {
+    cursor: pointer;
+}
+
+input[type="file"]::-ms-file-upload-button {
+    cursor: pointer;
+}
+
+input[type="file"]::-o-file-upload-button {
+    cursor: pointer;
+}
+
+input[type="file"] {
+    cursor: pointer;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Plus Jakarta Sans";
+    font-weight: normal;
+    overflow: hidden;
+    background: #FFFFFA;
+    padding: 0;
+}
+
+*::selection {
+    color: #fff;
+    background: #002025;
+}
+
+*::-moz-selection {
+    color: #fff;
+    background: #002025;
+}
+
+*::-webkit-selection {
+    color: #fff;
+    background: #002025;
+}
+
+*::-ms-selection {
+    color: #fff;
+    background: #002025;
+}
+
+*::-webkit-input-placeholder {
+    color: #333333;
+    opacity: 1;
+}
+
+*:-moz-placeholder {
+    color: #333333;
+    opacity: 1;
+}
+
+*::-moz-placeholder {
+    color: #333333;
+    opacity: 1;
+}
+
+*:-ms-input-placeholder {
+    color: #333333;
+    opacity: 1;
+}
+
+a,
+div a:hover,
+div a:active,
+div a:focus,
+button {
+    text-decoration: none;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+}
+
+a,
+span,
+div a:hover,
+div a:active,
+button {
+    text-decoration: none;
+}
+
+*::after,
+*::before,
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body a {
+    font-family: "Plus Jakarta Sans";
+    font-weight: normal;
+    color: #333333;
+    text-decoration: none;
+    outline: none !important;
+}
+
+body a:focus {
+    outline: none !important;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+div input,
+div select,
+div textarea,
+div button {
+    font-family: "Plus Jakarta Sans";
+    font-weight: normal
+}
+
+input,
+select,
+textarea,
+.site textarea {
+    font-family: "Plus Jakarta Sans";
+    font-weight: normal;
+    width: 100%;
+    background: #fff;
+}
+
+body input[type="text"],
+body input[type="email"],
+body input[type="url"],
+body input[type="password"],
+body input[type="search"],
+body input[type="number"],
+body input[type="tel"],
+body input[type="range"],
+body input[type="date"],
+body input[type="month"],
+body input[type="week"],
+body input[type="time"],
+body input[type="datetime"],
+body input[type="datetime-local"],
+body input[type="color"],
+body .site textarea,
+body .site select {
+    background: #fff;
+    font-family: "Plus Jakarta Sans";
+    height: 55px;
+    line-height: normal;
+    padding: 0 15px;
+    text-align: left;
+    width: 100%;
+    box-shadow: none;
+    margin: 0;
+    border: 1px solid #E6E6E6;
+    color: #4D4D4D;
+    outline-offset: unset;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none !important;
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+input::-moz-focus-inner,
+button::-moz-focus-inner,
+select::-moz-focus-inner,
+option::-moz-focus-inner,
+a::-moz-focus-inner,
+button,
+a {
+    border: 0;
+    outline: none;
+}
+
+body textarea {
+    resize: none;
+    overflow: auto;
+    height: 115px !important;
+    padding-top: 15px !important;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+    color: #001F25;
+    font-family: "Plus Jakarta Sans";
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 66px;
+    letter-spacing: -2.4px;
+    margin-bottom: 20px;
+}
+
+body h1 {
+    font-size: 40px;
+}
+
+body h2 {
+    font-size: 30px;
+}
+
+body h3 {
+    font-size: 26px;
+}
+
+body h4 {
+    font-size: 20px;
+}
+
+body h5 {
+    font-size: 18px;
+}
+
+body h6 {
+    font-size: 16px;
+}
+
+body h1:last-child,
+body h2:last-child,
+body h3:last-child,
+body h4:last-child,
+body h5:last-child,
+body h6:last-child {
+    margin-bottom: 0;
+}
+
+div select {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: "Plus Jakarta Sans";
+    font-weight: normal;
+}
+
+img {
+    margin: 0;
+    width: auto;
+    height: auto;
+    display: block;
+    outline: none !important;
+    max-width: 100%;
+}
+
+body p {
+    color: #2C323F;
+    font-family: "Plus Jakarta Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.36px;
+}
+
+body p:empty {
+    margin: 0;
+    line-height: 0;
+}
+
+body p:last-child {
+    margin-bottom: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 830px;
+    padding: 0 15px;
+    margin: 0 auto;
+    position: relative;
+    float: none;
+}
+
+body ul,
+body li,
+body ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+span,
+b,
+i {
+    display: inline-block;
+    vertical-align: top;
+}
+
+html #wpadminbar {
+    display: none !important;
+}
+
+html[lang="en-US"] {
+    margin-top: 0 !important;
+}
+
+/*Section Started */
+#header {
+    padding: 35px 0 0 0;
+}
+
+.carlo-tesmer-section {
+    padding: 59px 0 0 0;
+}
+
+.carlo-tesmer-section .container {
+    position: relative;
+    padding-bottom: 36px;
+    margin: 0 auto 33px;
+}
+
+.carlo-tesmer-section .container::before {
+    content: "";
+    position: absolute;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/border-img.svg) no-repeat;
+    height: 7px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.carlo-tesmer-section h3 {
+    color: #001F25;
+    font-family: "Plus Jakarta Sans";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: -0.52px;
+    padding: 0 0 0 32px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.carlo-tesmer-section h3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    background: url(../images/hello-icon.svg) no-repeat;
+    width: 26px;
+    height: 26px;
+
+}
+
+.carlo-tesmer-section h3 span {
+    font-weight: 700;
+}
+
+.carlo-tesmer-section p {
+    color: #2C323F;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: -0.32px;
+}
+
+.carlo-tesmer-section p:first-of-type {
+    padding: 0 0 2px 0;
+}
+
+.script-ideas-section h4 {
+    color: #001F25;
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.4px;
+    margin-bottom: 14px;
+}
+
+.script-ideas-section .script-wrap {
+    background: #D3DEC3;
+    padding: 14px 36px 23px 30px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.script-ideas-section p {
+    color: #2C323F;
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+    position: relative;
+    padding-left: 25px;
+    display: inline;
+}
+
+.script-ideas-section p::before,
+.script-ideas-section .script-wrap::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/quotes-icon.svg) no-repeat;
+    width: 20px;
+    height: 16px;
+}
+
+.script-ideas-section .script-wrap::before {
+    background: url(../images/heart-icon.svg) no-repeat;
+    left: auto;
+    right: 30px;
+    top: -20px;
+    width: 32px;
+    height: 32px;
+}
+
+.video-recording-section {
+    padding: 46px 0 0 0;
+}
+
+.video-recording-section h3 {
+    color: #001F25;
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.4px;
+    margin-bottom: 17px;
+}
+
+.video-recording-section ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px;
+}
+
+.video-recording-section ul li .img-wrap a {
+    background: #F5CFC2;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.video-recording-section ul li:nth-child(2) .img-wrap a {
+    background: #D8C5D3;
+}
+
+.video-recording-section ul li:last-of-type .img-wrap a img {
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.video-recording-section ul li .content-wrap {
+    padding: 10px 0 0 0;
+}
+
+.video-recording-section ul li .content-wrap p {
+    color: #2C323F;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+}
+
+.video-upload-section {
+    padding: 36px 0 60px 0;
+}
+
+.video-upload-section .input-file {
+    background: #F5F4EB;
+    height: 238px;
+    border-radius: 20px;
+    padding: 14px 15px 0 15px;
+}
+
+.video-upload-section .input-file .input-file-wrap {
+	height: 133px;
+	border: 1px dashed rgba(0, 32, 37, 0.20);
+	border-radius: 20px;
+	width: 100%;
+	background: #FFFFFA;
+	position: relative;
+}
+
+.video-upload-section .input-file .input-file-wrap::before {
+    content: "";
+    position: absolute;
+    top: 26px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 45px;
+    height: 45px;
+    background: url(../images/upload-icon.svg) no-repeat;
+    margin: 0 auto;
+}
+
+.video-upload-section .input-file-wrap input {
+    height: 100%;
+}
+
+.video-upload-section .input-file-wrap p {
+    color: #001F25;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: -0.28px;
+    width: fit-content;
+    margin: 0 auto;
+    position: relative;
+    top: -47%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.video-upload-section .input-file-wrap p span {
+    color: #AAEA28;
+}
+
+.video-upload-section .input-file .submit {
+    color: rgba(0, 31, 37, 0.50);
+    font-family: "Plus Jakarta Sans";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 50px;
+    letter-spacing: -0.17px;
+    border-radius: 50px;
+    background: rgba(0, 32, 37, 0.20);
+    padding: 0 46px;
+    margin: 19px 0 0 0;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.video-upload-section .input-file .submit.active {
+    background: linear-gradient(90deg, #30D7F1 0%, #74F857 50.5%, #EBE645 100%);
+    color: #001F25;
+}
+
+input[type="file"] {
+    opacity: 0;
+}

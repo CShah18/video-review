@@ -1,0 +1,190 @@
+@media only screen and (min-width: 992px) and (max-width: 1120px) {
+    .carlo-tesmer-section h3 {
+        font-size: 24px;
+        margin-bottom: 11px;
+    }
+
+    .carlo-tesmer-section .container {
+        padding-bottom: 25px;
+        margin: 0 auto 25px;
+    }
+
+    .carlo-tesmer-section .container::before {
+        width: 96%;
+    }
+
+    .script-ideas-section h4 {
+        font-size: 18px;
+    }
+
+    .script-ideas-section p,
+    .video-recording-section h3 {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .video-recording-section {
+        padding: 35px 0 0 0;
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .carlo-tesmer-section h3 {
+        font-size: 24px;
+        margin-bottom: 11px;
+    }
+
+    .carlo-tesmer-section p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .carlo-tesmer-section .container {
+        padding-bottom: 25px;
+        margin: 0 auto 25px;
+    }
+
+    .carlo-tesmer-section .container::before {
+        width: 95%;
+    }
+
+    .script-ideas-section h4 {
+        font-size: 16px;
+    }
+
+    .script-ideas-section p,
+    .video-recording-section h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .video-recording-section {
+        padding: 35px 0 0 0;
+    }
+
+    .video-recording-section ul {
+        grid-gap: 15px;
+    }
+
+    .video-upload-section .input-file .submit {
+        font-size: 15px;
+        padding: 0 40px;
+        margin: 15px 0 0 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .carlo-tesmer-section {
+        padding: 40px 0 0 0;
+    }
+
+    .carlo-tesmer-section p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .carlo-tesmer-section h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .carlo-tesmer-section h3::before {
+        top: 5px;
+        width: 22px;
+        height: 22px;
+        background-size: 22px;
+    }
+
+    .carlo-tesmer-section .container {
+        padding-bottom: 25px;
+        margin: 0 auto 25px;
+    }
+
+    .carlo-tesmer-section .container::before {
+        width: 95%;
+    }
+
+    .script-ideas-section h4 {
+        font-size: 15px;
+        line-height: 25px;
+        margin-bottom: 30px;
+    }
+
+    .script-ideas-section .script-wrap {
+        padding: 14px 20px 20px 15px;
+        border-radius: 15px;
+    }
+
+    .script-ideas-section p::before {
+        top: 0;
+    }
+
+    .script-ideas-section p,
+    .video-recording-section h3 {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .video-recording-section h3 {
+        text-align: center;
+    }
+
+    .script-ideas-section p::after {
+        top: -30px;
+    }
+
+    .video-recording-section {
+        padding: 35px 0 0 0;
+    }
+
+    .video-recording-section ul {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 15px;
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    .video-upload-section .input-file {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-upload-section .input-file {
+        height: 210px;
+        border-radius: 10px;
+        padding: 15px 15px 0 15px;
+    }
+
+    .video-upload-section .input-file .submit {
+        font-size: 14px;
+        line-height: 40px;
+        padding: 0 40px;
+        margin: 10px 0 0 0;
+    }
+
+}
+
+@media only screen and (min-width: 580px) and (max-width: 776px) {
+    .video-recording-section ul {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        max-width: unset;
+    }
+
+    .video-recording-section ul li:last-of-type {
+        grid-column: 1 / span 2;
+    }
+
+    .video-recording-section ul li:last-of-type .img-wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        max-width: 500px;
+    }
+}
