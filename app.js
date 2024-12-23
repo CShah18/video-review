@@ -4,12 +4,13 @@ const videoReview = require("./videoReview");
 const cors = require("cors");
 const path = require("path");
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
 
-app.use(express.static("public"));
+// Set EJS as the view engine
+app.set("view engine", "ejs");
 
 // JSON body parser with a limit of 50 megabytes
 app.use(express.json({ limit: "50mb" }));
@@ -21,6 +22,17 @@ app.use(
 
 // Text body parser with a limit of 200 megabytes
 app.use(express.text({ limit: "200mb" }));
+
+// Serve static files from the "public" folder
+app.use(express.static(path.join(__dirname, "public")));
+
+// Dynamic route to handle user names
+app.get("/:name", (req, res) => {
+  const name = req.params.name;
+  const formattedName =
+    name.charAt(0).toUpperCase() + name.slice(1);
+  res.render("index", { name: formattedName });
+});
 
 app.use("/api/v1/videoReview", videoReview);
 
@@ -35,6 +47,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong!" });
 });
 
+// Start the server
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server is running on port ${port}`);
 });

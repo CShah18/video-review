@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&amp;display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/styles.css">
+    <link type="text/css" rel="stylesheet" href="/css/responsive.css">
+    <style>
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+            height: 20px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            white-space: nowrap;
+        }
+
+        .submit {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .submit.disabled {
+            background-color: #cccccc !important;
+            cursor: not-allowed !important;
+        }
+
+        .file-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .dialog-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ece6e6;
+            color: #1f1515;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+
+<body class="home">
+    <div id="wrapper">
+        <header id="header" class="header">
+            <div class="container">
+                <div class="header-main section">
+                    <div class="logo">
+                        <a href="/"><img src="/images/header-logo.svg" alt="logo"></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="name-section">
+                <div class="container">
+                    <div class="name-wrap">
+                        <h3>Hello, <span><%= name %>!</span></h3>
+                        <p>Thanks so much for agreeing to record a video testimonial! We really appreciate it.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut laoreet dolore aliquam erat volutpat. Ut wisi enim ad minim.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="script-ideas-section">
+                <div class="container">
+                    <div class="script-ideas-wrap">
+                        <h4>We are exactly your words around this script ideas:</h4>
+                        <div class="script-wrap">
+                            <p> I’ve worked this team for several years now and they are the best I know. All of them
+                                are truly professional. They have the patience of a surgeon when it comes to
+                                modification and changes. You know when you have some expectations about the result and
+                                you are just blown away because what you receive is way far above what you expected?
+                                this is what I got.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="video-recording-section">
+                <div class="container">
+                    <div class="Video-recording-wrap">
+                        <h3>Tips for a Good Video Recording:</h3>
+                        <div class="videos-wrap">
+                            <ul>
+                                <li>
+                                    <div class="img-wrap">
+                                        <a href="#">
+                                            <img src="/images/videos-recordeing-img1.png">
+                                        </a>
+                                    </div>
+                                    <div class="content-wrap">
+                                        <p>1080p HD video recording at<br> 25 fps, 30 fps or 60 fps</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img-wrap">
+                                        <a href="#">
+                                            <img src="/images/videos-recordeing-img2.png">
+                                        </a>
+                                    </div>
+                                    <div class="content-wrap">
+                                        <p>Good lighting on your face. with nice<br> background and no noise!</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img-wrap">
+                                        <a href="#">
+                                            <img src="/images/videos-recordeing-img3.png">
+                                        </a>
+                                    </div>
+                                    <div class="content-wrap">
+                                        <p>Make sure you distance 2-4 ft from <br>camera and center of frame.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="video-upload-section">
+                <div class="container">
+                    <div class="video-upload-wrap">
+                        <div class="input-file">
+                            <div class="input-file-wrap">
+                                <input type="file" name="file" id="file" accept=".mp4, .mov, .wmv, .avi, .mkv, .webm, video/mp4, video/quicktime, video/x-ms-wmv, video/x-matroska, video/webm">
+                                <p class="drop-file">Drag and drop video or
+                                    <span>browse</span>
+                                </p>
+                                <p class="file-info" id="file-info">No file selected</p>
+                            </div>
+                            <a class="submit disabled" id="submit-button">Submit</a>
+                            <div class="progress-bar" id="progress-bar">
+                                <div class="progress-bar-fill" id="progress-bar-fill">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dialog-box" class="dialog-box">
+                <p id="dialog-message"></p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            const fileInput = $("#file");
+            const fileInfo = $("#file-info");
+            const submitButton = $("#submit-button");
+            const progressBar = $("#progress-bar");
+            const progressBarFill = $("#progress-bar-fill");
+            const dialogBox = $("#dialog-box");
+            const dialogMessage = $("#dialog-message");
+
+            const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500 MB in bytes
+
+            // Allowed file types (extensions and MIME types)
+            const allowedExtensions = ["mp4", "mov", "wmv", "avi", "mkv", "webm"];
+            const allowedMimeTypes = [
+                "video/mp4",
+                "video/quicktime",
+                "video/x-ms-wmv",
+                "video/avi",
+                "video/x-matroska",
+                "video/webm",
+            ];
+
+            // Handle file selection
+            fileInput.on("change", function () {
+                const file = fileInput[0].files[0];
+                if (file) {
+                    const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                    const fileName = file.name;
+                    const fileExtension = fileName.split(".").pop().toLowerCase();
+                    const fileMimeType = file.type;
+
+                    fileInfo.text(`Selected file: ${file.name} (${fileSize} MB)`);
+
+                    // Check file size
+                    if (file.size > MAX_FILE_SIZE) {
+                        fileInfo.text("File is too large. Maximum allowed size is 500 MB.");
+                        submitButton.addClass("disabled");
+                        return;
+                    }
+
+                    // Check file type (extension and MIME type)
+                    if (!allowedExtensions.includes(fileExtension) || !allowedMimeTypes.includes(fileMimeType)) {
+                        fileInfo.text("Invalid file type. Only MP4, MOV, WMV, AVI, MKV, or WebM files are allowed.");
+                        submitButton.addClass("disabled");
+                        return;
+                    }
+
+                    // If everything is valid, enable the submit button
+                    submitButton.removeClass("disabled");
+                } else {
+                    fileInfo.text("No file selected");
+                    submitButton.addClass("disabled");
+                }
+            });
+
+            // Handle submit button click
+            submitButton.on("click", function () {
+                if (submitButton.hasClass("disabled")) {
+                    return;
+                }
+
+                const file = fileInput[0].files[0];
+                if (!file) {
+                    alert("Please select a file before submitting.");
+                    return;
+                }
+
+                const userName = "<%= name %>";
+                const formData = new FormData();
+                formData.append("videoReview", file);
+                formData.append("userName", userName);
+
+                submitButton.addClass("disabled");
+                submitButton.text("Submitting...");
+                progressBar.show();
+                progressBarFill.css("width", "0%");
+                progressBarFill.text("0%");
+
+                // AJAX file upload
+                $.ajax({
+                    url: "/api/v1/videoReview/submit",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    xhr: function () {
+                        const xhr = new window.XMLHttpRequest();
+                        xhr.upload.addEventListener("progress", function (e) {
+                            if (e.lengthComputable) {
+                                const percentComplete = Math.round((e.loaded / e.total) * 100);
+                                progressBarFill.css("width", `${percentComplete}%`);
+                                progressBarFill.text(`${percentComplete}%`);
+                            }
+                        });
+                        return xhr;
+                    },
+                    success: function () {
+                        if (progressBarFill.width() === progressBar.width()) {
+                            // Show success dialog
+                            dialogMessage.text("Thanks for submitting the review!");
+                            dialogBox.fadeIn();
+                            setTimeout(function () {
+                                dialogBox.fadeOut();
+                            }, 5000);
+                            progressBarFill.css("width", "0%");
+                            progressBarFill.text("0%");
+                            fileInput.val("");
+                            fileInfo.text("No file selected");
+                            submitButton.removeClass("disabled");
+                            submitButton.text("Submit");
+                            progressBar.hide();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Submission failed:", error);
+                        // Show error dialog
+                        dialogMessage.text("Failed to submit video. Please try again.");
+                        dialogBox.fadeIn();
+                        setTimeout(function () {
+                            dialogBox.fadeOut();
+                        }, 5000);
+                        submitButton.removeClass("disabled");
+                        submitButton.text("Submit");
+                        progressBar.hide();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

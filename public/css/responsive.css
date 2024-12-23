@@ -1,15 +1,15 @@
 @media only screen and (min-width: 992px) and (max-width: 1120px) {
-    .carlo-tesmer-section h3 {
+    .name-section h3 {
         font-size: 24px;
         margin-bottom: 11px;
     }
 
-    .carlo-tesmer-section .container {
+    .name-section .container {
         padding-bottom: 25px;
         margin: 0 auto 25px;
     }
 
-    .carlo-tesmer-section .container::before {
+    .name-section .container::before {
         width: 96%;
     }
 
@@ -30,22 +30,22 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .carlo-tesmer-section h3 {
+    .name-section h3 {
         font-size: 24px;
         margin-bottom: 11px;
     }
 
-    .carlo-tesmer-section p {
+    .name-section p {
         font-size: 15px;
         line-height: 25px;
     }
 
-    .carlo-tesmer-section .container {
+    .name-section .container {
         padding-bottom: 25px;
         margin: 0 auto 25px;
     }
 
-    .carlo-tesmer-section .container::before {
+    .name-section .container::before {
         width: 95%;
     }
 
@@ -75,33 +75,33 @@
 }
 
 @media only screen and (max-width: 767px) {
-    .carlo-tesmer-section {
+    .name-section {
         padding: 40px 0 0 0;
     }
 
-    .carlo-tesmer-section p {
+    .name-section p {
         font-size: 14px;
         line-height: 24px;
     }
 
-    .carlo-tesmer-section h3 {
+    .name-section h3 {
         font-size: 22px;
         margin-bottom: 10px;
     }
 
-    .carlo-tesmer-section h3::before {
+    .name-section h3::before {
         top: 5px;
         width: 22px;
         height: 22px;
         background-size: 22px;
     }
 
-    .carlo-tesmer-section .container {
+    .name-section .container {
         padding-bottom: 25px;
         margin: 0 auto 25px;
     }
 
-    .carlo-tesmer-section .container::before {
+    .name-section .container::before {
         width: 95%;
     }
 

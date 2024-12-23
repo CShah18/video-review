@@ -358,17 +358,17 @@ html[lang="en-US"] {
     padding: 35px 0 0 0;
 }
 
-.carlo-tesmer-section {
+.name-section {
     padding: 59px 0 0 0;
 }
 
-.carlo-tesmer-section .container {
+.name-section .container {
     position: relative;
     padding-bottom: 36px;
     margin: 0 auto 33px;
 }
 
-.carlo-tesmer-section .container::before {
+.name-section .container::before {
     content: "";
     position: absolute;
     top: auto;
@@ -381,7 +381,7 @@ html[lang="en-US"] {
     margin: 0 auto;
 }
 
-.carlo-tesmer-section h3 {
+.name-section h3 {
     color: #001F25;
     font-family: "Plus Jakarta Sans";
     font-size: 26px;
@@ -394,7 +394,7 @@ html[lang="en-US"] {
     margin-bottom: 15px;
 }
 
-.carlo-tesmer-section h3::before {
+.name-section h3::before {
     content: "";
     position: absolute;
     top: 0;
@@ -407,11 +407,11 @@ html[lang="en-US"] {
 
 }
 
-.carlo-tesmer-section h3 span {
+.name-section h3 span {
     font-weight: 700;
 }
 
-.carlo-tesmer-section p {
+.name-section p {
     color: #2C323F;
     font-family: "Plus Jakarta Sans";
     font-size: 16px;
@@ -421,7 +421,7 @@ html[lang="en-US"] {
     letter-spacing: -0.32px;
 }
 
-.carlo-tesmer-section p:first-of-type {
+.name-section p:first-of-type {
     padding: 0 0 2px 0;
 }
 
