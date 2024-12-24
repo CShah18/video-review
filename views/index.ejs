@@ -278,6 +278,7 @@
                 formData.append("videoReview", file);
                 formData.append("userName", userName);
 
+                removeFileButton.hide();
                 submitButton.addClass("disabled");
                 submitButton.removeClass("active");
                 submitButton.text("Submitting...");
