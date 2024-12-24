@@ -56,45 +56,103 @@ const fileUpload = multer({
 });
 
 router.post("/submit", fileUpload.single("videoReview"), async (req, res) => {
-  const userName = req.body.userName;
-  const uploadedFilePath = req.file.path;
-  const fileName = req.file.filename;
+  try {
+    const userName = req.body.userName;
+    const uploadedFilePath = req.file.path;
+    const fileName = req.file.filename;
 
-  // Create the user directory if it doesn't exist
-  const userDir = path.join(__dirname, "uploads", userName); // The target folder path
+    processFile(userName, uploadedFilePath, fileName, req);
 
-  if (!fs.existsSync(userDir)) {
-    fs.mkdirSync(userDir, { recursive: true }); // Create directory if it doesn't exist
+    return res.status(200).send(`File processing started successfully`);
+  } catch (error) {
+    return res.status(500).send(`Something went wrong while processing the file. Error: ${error.message}`);
   }
-
-  // Move the file to the new directory
-  const newFilePath = path.join(userDir, req.file.filename);
-  await renameAsync(uploadedFilePath, newFilePath);
-
-  // Upload to S3
-  const s3FolderPath = `${userName}/`; // Create a folder for the user in S3
-  const s3Key = `${s3FolderPath}${fileName}`; // Full path in the S3 bucket
-
-  // Read the file from disk
-  const fileContent = fs.readFileSync(newFilePath);
-
-  // Create the S3 upload parameters
-  const uploadParams = {
-    Bucket: process.env.AWS_BUCKET_NAME,
-    Key: s3Key,
-    Body: fileContent,
-    ContentType: req.file.mimetype,
-  };
-
-  // Upload the file to S3
-  const command = new PutObjectCommand(uploadParams);
-  await s3Client.send(command);
-  console.log(`File uploaded successfully!`);
-
-  // Optionally, delete the local file after upload
-  fs.unlinkSync(newFilePath);
-
-  return res.send("Success");
 });
+
+async function processFile(userName, uploadedFilePath, fileName, req) {
+  try {
+    // Create the user directory if it doesn't exist
+    const userDir = path.join(__dirname, "uploads", userName); // The target folder path
+
+    if (!fs.existsSync(userDir)) {
+      fs.mkdirSync(userDir, { recursive: true }); // Create directory if it doesn't exist
+    }
+
+    // Move the file to the new directory
+    const newFilePath = path.join(userDir, req.file.filename);
+    await renameAsync(uploadedFilePath, newFilePath);
+
+    // Upload to S3
+    const s3FolderPath = `${userName}/`; // Create a folder for the user in S3
+    const s3Key = `${s3FolderPath}${fileName}`; // Full path in the S3 bucket
+
+    // Read the file from disk
+    const fileContent = fs.readFileSync(newFilePath);
+
+    // Create the S3 upload parameters
+    const uploadParams = {
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: s3Key,
+      Body: fileContent,
+      ContentType: req.file.mimetype,
+    };
+
+    // Upload the file to S3
+    const command = new PutObjectCommand(uploadParams);
+    await s3Client.send(command);
+    console.log(`File uploaded successfully!`);
+
+    // Optionally, delete the local file after upload
+    fs.unlinkSync(newFilePath);
+  } catch (error) {
+    console.log(`Error in processing the file. Error: ${error.message}`);
+  }
+}
+
+
+// TODO:: NOTE :: Below api works with the complete process in sync (step-by-step)
+// router.post("/submit", fileUpload.single("videoReview"), async (req, res) => {
+//   const userName = req.body.userName;
+//   const uploadedFilePath = req.file.path;
+//   const fileName = req.file.filename;
+
+//   // Create the user directory if it doesn't exist
+//   const userDir = path.join(__dirname, "uploads", userName); // The target folder path
+
+//   if (!fs.existsSync(userDir)) {
+//     fs.mkdirSync(userDir, { recursive: true }); // Create directory if it doesn't exist
+//   }
+
+//   // Move the file to the new directory
+//   const newFilePath = path.join(userDir, req.file.filename);
+//   await renameAsync(uploadedFilePath, newFilePath);
+
+//   // Upload to S3
+//   const s3FolderPath = `${userName}/`; // Create a folder for the user in S3
+//   const s3Key = `${s3FolderPath}${fileName}`; // Full path in the S3 bucket
+
+//   // Read the file from disk
+//   const fileContent = fs.readFileSync(newFilePath);
+
+//   // Create the S3 upload parameters
+//   const uploadParams = {
+//     Bucket: process.env.AWS_BUCKET_NAME,
+//     Key: s3Key,
+//     Body: fileContent,
+//     ContentType: req.file.mimetype,
+//   };
+
+//   // Upload the file to S3
+//   const command = new PutObjectCommand(uploadParams);
+//   await s3Client.send(command);
+//   console.log(`File uploaded successfully!`);
+
+//   // Optionally, delete the local file after upload
+//   fs.unlinkSync(newFilePath);
+
+//   return res.send("Success");
+// });
+
+
 
 module.exports = router;
