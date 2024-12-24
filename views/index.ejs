@@ -223,6 +223,7 @@
                     if (file.size > MAX_FILE_SIZE) {
                         fileInfo.text("File is too large. Maximum allowed size is 500 MB.");
                         submitButton.addClass("disabled");
+                        submitButton.removeClass("active");
                         return;
                     }
 
@@ -230,14 +231,17 @@
                     if (!allowedExtensions.includes(fileExtension) || !allowedMimeTypes.includes(fileMimeType)) {
                         fileInfo.text("Invalid file type. Only MP4, MOV, WMV, AVI, MKV, or WebM files are allowed.");
                         submitButton.addClass("disabled");
+                        submitButton.removeClass("active");
                         return;
                     }
 
                     // If everything is valid, enable the submit button
                     submitButton.removeClass("disabled");
+                    submitButton.addClass("active");
                 } else {
                     fileInfo.text("No file selected");
                     submitButton.addClass("disabled");
+                    submitButton.removeClass("active");
                 }
             });
 
@@ -259,6 +263,7 @@
                 formData.append("userName", userName);
 
                 submitButton.addClass("disabled");
+                submitButton.removeClass("active");
                 submitButton.text("Submitting...");
                 progressBar.show();
                 progressBarFill.css("width", "0%");
@@ -294,7 +299,8 @@
                             progressBarFill.text("0%");
                             fileInput.val("");
                             fileInfo.text("No file selected");
-                            submitButton.removeClass("disabled");
+                            // submitButton.removeClass("disabled");
+                            // submitButton.addClass("active");
                             submitButton.text("Submit");
                             progressBar.hide();
                         }
@@ -307,7 +313,8 @@
                         setTimeout(function () {
                             dialogBox.fadeOut();
                         }, 5000);
-                        submitButton.removeClass("disabled");
+                        // submitButton.removeClass("disabled");
+                        // submitButton.addClass("active");
                         submitButton.text("Submit");
                         progressBar.hide();
                     }
