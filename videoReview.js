@@ -4,7 +4,8 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require('path');
 const util = require("util");
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const { S3Client, PutObjectCommand, ListObjectsV2Command, GetObjectCommand } = require('@aws-sdk/client-s3');
+const { Readable } = require('stream');
 
 // Promisify fs.rename to use with async/await
 const renameAsync = util.promisify(fs.rename);
@@ -108,6 +109,94 @@ async function processFile(userName, uploadedFilePath, fileName, req) {
     console.log(`Error in processing the file. Error: ${error.message}`);
   }
 }
+
+// Helper function to list all objects in the bucket
+const listAllKeys = async (Prefix = '') => {
+  let allKeys = [];
+  let continuationToken = undefined;
+
+  do {
+      const command = new ListObjectsV2Command({
+          Bucket: process.env.AWS_BUCKET_NAME,
+          Prefix,
+          ContinuationToken: continuationToken,
+      });
+      const data = await s3Client.send(command);
+
+      if (data.Contents) {
+          allKeys = allKeys.concat(data.Contents.map((item) => item.Key));
+      }
+
+      continuationToken = data.IsTruncated ? data.NextContinuationToken : undefined;
+  } while (continuationToken);
+
+  return allKeys;
+};
+
+router.get('/showFiles', async (req, res) => {
+  try {
+      const keys = await listAllKeys();
+
+      // Convert flat list of keys into a nested folder structure
+      const buildTree = (keys) => {
+          const tree = {};
+
+          keys.forEach((key) => {
+              const parts = key.split('/');
+              parts.reduce((acc, part, idx) => {
+                  if (!acc[part]) {
+                      acc[part] = idx === parts.length - 1 ? null : {};
+                  }
+                  return acc[part];
+              }, tree);
+          });
+
+          return tree;
+      };
+
+      const treeStructure = buildTree(keys);
+
+      res.json({
+          success: true,
+          data: treeStructure,
+      });
+  } catch (error) {
+      console.error('Error fetching files:', error);
+      res.status(500).json({
+          success: false,
+          message: 'Error fetching files',
+          error: error.message,
+      });
+  }
+});
+
+router.get('/download', async (req, res) => {
+  const filePath = req.query.filePath;
+
+  if (!filePath) {
+      return res.status(400).send('File path is required');
+  }
+
+  try {
+      const command = new GetObjectCommand({
+          Bucket: process.env.AWS_BUCKET_NAME,
+          Key: filePath,
+      });
+
+      const data = await s3Client.send(command);
+      const stream = data.Body;
+
+      // Set the filename for download
+      res.attachment(filePath.split('/').pop());
+
+      // Pipe the S3 stream to the response
+      Readable.from(stream).pipe(res);
+  } catch (error) {
+      console.error('Error downloading file:', error);
+      res.status(500).send('Error downloading file');
+  }
+});
+
 
 
 // TODO:: NOTE :: Below api works with the complete process in sync (step-by-step)

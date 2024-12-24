@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Browser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            cursor: pointer;
+            padding-left: 20px; /* Indentation for nested items */
+        }
+        .folder {
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .file {
+            font-weight: normal;
+            color: #555;
+        }
+        .hidden {
+            display: none;
+        }
+        .folder::before {
+            content: '📁 '; /* Icon for folders */
+        }
+        .file::before {
+            content: '- '; /* Hyphen for files */
+        }
+    </style>
+</head>
+<body>
+    <h1>File Browser</h1>
+    <div id="file-structure"></div>
+
+    <script>
+        // Fetch file structure from API
+        async function fetchFileStructure() {
+            try {
+                const response = await fetch('/api/v1/videoReview/showFiles');
+                const data = await response.json();
+
+                if (data.success) {
+                    const container = document.getElementById('file-structure');
+                    container.appendChild(createTree(data.data));
+                } else {
+                    console.error('Error fetching file structure:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching file structure:', error);
+            }
+        }
+
+        // Recursively create tree structure
+        function createTree(data, prefix = '') {
+            const ul = document.createElement('ul');
+
+            for (const key in data) {
+                const li = document.createElement('li');
+
+                if (data[key] === null) {
+                    const filePath = `${prefix}${key}`;
+                    li.textContent = key;
+                    li.classList.add('file');
+
+                    // Add click event to download file
+                    li.addEventListener('click', async () => {
+                        downloadFile(filePath);
+                    });
+                } else {
+                    li.textContent = key;
+                    li.classList.add('folder');
+
+                    const nestedUl = createTree(data[key], `${prefix}${key}/`);
+                    nestedUl.classList.add('hidden');
+                    li.appendChild(nestedUl);
+
+                    li.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        nestedUl.classList.toggle('hidden');
+                    });
+                }
+
+                ul.appendChild(li);
+            }
+
+            return ul;
+        }
+
+        // Download file from S3
+        async function downloadFile(filePath) {
+            try {
+                const response = await fetch(`/api/v1/videoReview/download?filePath=${encodeURIComponent(filePath)}`);
+                if (!response.ok) throw new Error('Failed to download file');
+
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+
+                // Create a temporary anchor element to trigger download
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filePath.split('/').pop(); // Extract filename
+                document.body.appendChild(a);
+                a.click();
+
+                // Clean up
+                URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } catch (error) {
+                console.error('Error downloading file:', error);
+                alert('Error downloading file: ' + error.message);
+            }
+        }
+
+        // Initialize
+        fetchFileStructure();
+    </script>
+</body>
+</html>
