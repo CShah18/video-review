@@ -5,36 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Browser</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+        #file-structure ul .folder {
+            position: relative;
+            padding: 0 0 0 30px;
+            margin-bottom: 30px;
         }
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+
+        #file-structure ul .folder {
+            position: relative;
+            padding: 0 0 0 30px;
+            margin-bottom: 30px;
         }
-        li {
-            margin: 5px 0;
-            cursor: pointer;
-            padding-left: 20px; /* Indentation for nested items */
+        #file-structure ul .folder::after {
+            content: '📁 ';
+            position: absolute;
+            top: -4px;
+            left: 5px;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
         }
-        .folder {
-            font-weight: bold;
-            color: #007BFF;
+        #file-structure ul .folder > ul {
+            position: relative;
+            width: fit-content;
+            margin: 10px 0 0 0;
         }
-        .file {
-            font-weight: normal;
-            color: #555;
+        #file-structure ul .folder > ul > li {
+            padding: 0 0 0 30px;
+            margin: 0 0 0 60px;
+            width: fit-content;
+            position: relative;
         }
-        .hidden {
-            display: none;
+        #file-structure ul .folder > ul > li::before {
+            content: '📄 ';
+            position: absolute;
+            top: -3px;
+            left: 0;
+            right: auto;
+            bottom: 0;
+            width: 21px;
+            height: 20px;
         }
-        .folder::before {
-            content: '📁 '; /* Icon for folders */
-        }
-        .file::before {
-            content: '- '; /* Hyphen for files */
+        #file-structure ul .folder > ul > li::after {
+            content: "";
+            position: absolute;
+            top: 7px;
+            left: -38px;
+            right: auto;
+            bottom: 0;
+            width: 33px;
+            height: 2px;
+            background: #000;
         }
     </style>
 </head>
