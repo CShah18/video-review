@@ -3,6 +3,8 @@ require("dotenv").config();
 const videoReview = require("./videoReview");
 const cors = require("cors");
 const path = require("path");
+const fs = require("fs");
+const https = require("https");
 
 const port = process.env.PORT || 3000;
 
@@ -47,8 +49,14 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-// Start the server
-app.listen(port, "0.0.0.0", () => {
+// Load SSL certificates
+const sslOptions = {
+  key: fs.readFileSync("./private.key"),  // Path to your private key
+  cert: fs.readFileSync("./certificate.crt"),  // Path to your certificate
+};
+
+// Start the HTTPS server
+https.createServer(sslOptions, app).listen(port, "0.0.0.0", () => {
   console.log(`Server is running on port ${port}`);
 });
 
