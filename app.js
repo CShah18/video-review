@@ -9,7 +9,17 @@ const https = require("https");
 const port = process.env.PORT || 3000;
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://webforest.agency', // Allow all origins or specify the front-end domain like 'http://localhost:3000'
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow only necessary HTTP methods
+  allowedHeaders: '*', // Allow necessary headers
+  credentials: true, // Allow credentials if needed
+};
+
+app.use(cors(corsOptions));
+
+app.options('https://webforest.agency', cors(corsOptions));
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
